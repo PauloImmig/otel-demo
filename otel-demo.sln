@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D88949EF-334A-48A2-ADF6-249112CDEA31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otel.Demo.Api1", "src\Otel.Demo.Api1\Otel.Demo.Api1.csproj", "{B1D7C9ED-3F4E-4810-8283-431D742F1BBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{67F3F03D-8F01-4828-AC82-D34FC932EA83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database-scripts", "database-scripts", "{EA9E9CB9-6A58-498B-A24F-E23409CD3AD1}"
+	ProjectSection(SolutionItems) = preProject
+		database-scripts\init.sql = database-scripts\init.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1D7C9ED-3F4E-4810-8283-431D742F1BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D7C9ED-3F4E-4810-8283-431D742F1BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D7C9ED-3F4E-4810-8283-431D742F1BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D7C9ED-3F4E-4810-8283-431D742F1BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1D7C9ED-3F4E-4810-8283-431D742F1BBA} = {D88949EF-334A-48A2-ADF6-249112CDEA31}
+		{EA9E9CB9-6A58-498B-A24F-E23409CD3AD1} = {67F3F03D-8F01-4828-AC82-D34FC932EA83}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {518BD5BD-27B8-426B-93EF-83698FBC7C7C}
+	EndGlobalSection
+EndGlobal
