@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using Otel.Demo.Api1.Clients;
@@ -13,6 +14,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureOpenTelemetry(builder.Configuration);
 
 builder.Services.AddLogging(logBuilder => logBuilder.UseAzureMonitor(builder.Configuration));
+builder.Services.AddHttpLogging(options =>
+{
+    options.LoggingFields = HttpLoggingFields.All;
+});
 
 builder.Services.AddOpenMeteoClient(builder.Configuration);
 
@@ -26,7 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpLogging();
 
 app.MapGet("/weatherforecast-api1",
     async ([FromServices] ILoggerFactory loggerFactory,
@@ -53,6 +58,18 @@ app.MapGet("/weatherforecast-api1",
 .WithName("GetWeatherForecastApi1")
 .WithOpenApi();
 
+app.MapPost("/weatherforecast-api1",
+    async ([FromServices] ILoggerFactory loggerFactory, [FromBody] SampleBody sampleBody) =>
+    {        
+        await Task.Yield();
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogInformation("Running API 1 POST endpoint {at}", DateTime.UtcNow);        
+
+        return Results.Ok();
+    })
+.WithName("PostWeatherForecastApi1")
+.WithOpenApi();
+
 app.Run();
 
 void SaveWeatherForecastRequest(WeatherForecastResponse weatherForecastResponse)
@@ -66,3 +83,5 @@ void SaveWeatherForecastRequest(WeatherForecastResponse weatherForecastResponse)
         var reader = command.ExecuteNonQuery();        
     }
 }
+
+public record SampleBody(Guid id, string name);
